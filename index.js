@@ -68,7 +68,7 @@ function logStateReadout() {
 	const logState = [
 		[state.operandA, Number(state.operandA)], 
 		[state.operandB, Number(state.operandB)],
-		[state.operator, Number(state.operator)],
+		[state.operator, null],
 	];
 	console.table(logState);
 }
