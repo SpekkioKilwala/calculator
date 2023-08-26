@@ -17,10 +17,15 @@ const state = {
 clear(state);
 
 const mainReadout = document.querySelector(".main-readout");
+
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(button => button.addEventListener('click', actionDigit)); // <--- review this line. On paper. Super critical.
+
 const resetButton = document.querySelector(".reset");
 resetButton.addEventListener('click', btReset);
+
+const operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach(button => button.addEventListener('click', actionOperator));
 
 updateDisplay();
 
@@ -55,6 +60,11 @@ function actionDigit(e) {
 		}
 	}
 	updateDisplay();
+}
+
+function actionOperator(e) {
+	const op = e.srcElement.innerText;
+	console.log(op);
 }
 
 function updateDisplay(){
