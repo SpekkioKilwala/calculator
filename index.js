@@ -9,7 +9,7 @@ const DEBUG = true;
 const state = {
 	operandA: "",
 	operandB: "",
-	answer: undefined,
+	// answer: undefined,
 	operator: undefined
 }; 
 // I actually hate having an object called "state" but I need
@@ -105,12 +105,44 @@ function actionOperator(e) {
 
 function operands(){
 	// work out how many usable operands we have
-	return 1;
+	let tally = 0;
+	if ((state.operandA != "") || ("answer" in state)) {tally += 1;}
+	if (state.operandB != "") {tally += 1;}
+	return tally
 }
 
 function equals(){
 	// we "should" have 2 usable operands and an operator
 	// SEND IT
+	if (operands < 2) {
+		//error, do nothing, raise the undo flag
+		alert("error, not enough operators")
+	} else {
+		const newAnswer = operate(decipherSymbol(state.operator, eitherA(), state.operandB));
+		clear();
+		state[answer] = newAnswer
+	}
+}
+
+function eitherA() {
+	// If you have a valid A, give that,
+	// else if you have a valid last-answer, give THAT,
+	// else give "" 
+}
+
+function decipherSymbol(key) {
+	switch (state.operator) {
+		case '+':
+			return "add";
+		case '-':
+			return "subtract";
+		case '*':
+			return "multiply";
+		case '/':
+			return "divide";
+		default:
+			return key;
+	}
 }
 
 function updateDisplay(){
@@ -129,6 +161,7 @@ function logStateReadout() {
 		[state.operandA, Number(state.operandA)], 
 		[state.operandB, Number(state.operandB)],
 		[state.operator, null],
+		[state.answer, operands()],
 	];
 	console.table(logState);
 }
@@ -151,9 +184,13 @@ function btReset() {
 }
 
 function clear(state) {
+	// consider splitting this into a soft-clear and a hard-clear
+	// soft-clear preserves undo history, hard-clear doesn't
+	// The button is hard-clear, and soft-clear is currently
+	// just a normal part of giving the answer to an operation
 	state.operandA = "";
 	state.operandB = "";
-	state.answer = undefined;
+	delete state.answer;
 	state.operator = undefined;
 }
 
