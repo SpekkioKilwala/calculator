@@ -48,11 +48,11 @@ function actionDigit(e) {
 
 	// Create the action object here, with action: "digit"
 
-	const targetOperand = activeOperand();
+	const targetOperand = activeOperand(); // only ever A or B
 
 	if ((digit == ".") && (state[targetOperand].includes("."))) {
 		console.log("Only one decimal point allowed!")
-		// fire the Undo, flow on to update display
+		// raise the Undo flag, flow on to update display
 	} else if ((digit == "0") && (state[targetOperand] === "")) {
 		// do nothing, flow on to update display
 	} else {
@@ -84,6 +84,33 @@ function actionOperator(e) {
 
 	// action-history Undo starts *here* <====
 
+	if (operands() == 0) {
+		// do nothing. Maybe tell the user to input something.
+	} else if (operands() == 1) {
+		if (op == "=") {
+			// error / do nothing
+		} else {
+			state.operator = op; // <=== history wrap
+		}
+	} else { // 2 valid operators
+		if (op == "=") {
+			equals();
+		} else {
+			equals();
+			state.operator = op; // <=== history wrap
+		}
+	}
+	updateDisplay();
+}
+
+function operands(){
+	// work out how many usable operands we have
+	return 1;
+}
+
+function equals(){
+	// we "should" have 2 usable operands and an operator
+	// SEND IT
 }
 
 function updateDisplay(){
@@ -107,6 +134,10 @@ function logStateReadout() {
 }
 
 function activeOperand() {
+	// Determines which of the TWO valid operands (A or B)
+	// is valid for accepting user input.
+	// (the "previous answer" variable is a possible
+	// subsitute for A, not valid for further input)
 	if (state.operator) {
 		return "operandB"
 	} return "operandA"
