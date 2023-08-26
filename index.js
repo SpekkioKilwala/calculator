@@ -50,7 +50,11 @@ function actionDigit(e) {
 }
 
 function updateDisplay(){
-	mainReadout.textContent = Number(state[activeOperand()]);
+	if (state[activeOperand()] == "") {
+		mainReadout.textContent = "(awaiting number)";
+	} else {
+		mainReadout.textContent = state[activeOperand()];
+	}
 }
 
 function activeOperand() {
