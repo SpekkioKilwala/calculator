@@ -118,9 +118,9 @@ function equals(){
 		//error, do nothing, raise the undo flag
 		alert("error, not enough operators")
 	} else {
-		const newAnswer = operate(decipherSymbol(state.operator, eitherA(), state.operandB));
-		clear();
-		state[answer] = String(newAnswer);
+		const newAnswer = operate(decipherSymbol(state.operator), eitherA(), state.operandB);
+		clear(state);
+		state["answer"] = String(newAnswer);
 	}
 }
 
@@ -140,13 +140,13 @@ function eitherA() {
 function decipherSymbol(key) {
 	switch (state.operator) {
 		case '+':
-			return "add";
+			return add;
 		case '-':
-			return "subtract";
+			return subtract;
 		case '*':
-			return "multiply";
+			return multiply;
 		case '/':
-			return "divide";
+			return divide;
 		default:
 			return key;
 	}
@@ -203,6 +203,7 @@ function clear(state) {
 }
 
 function operate(operator, a, b) {
+	// console.log(operator, a, b);
 	return operator(a, b);
 }
 
