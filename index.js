@@ -40,11 +40,15 @@ function actionDigit(e) {
 	if ((digit == ".") && (state[targetOperand].includes("."))) {
 		console.log("Only one decimal point allowed!")
 		// fire the Undo, flow on to update display
-	} else if ((digit == "0") && (state[targetOperand] == 0)) {
+	} else if ((digit == "0") && (state[targetOperand] === "")) {
 		// do nothing, flow on to update display
 	} else {
-		// this line gets wrapped in undo-history-logging
+		// these lines get wrapped in undo-history-logging
 		state[targetOperand] = state[targetOperand].concat(digit);
+		if (state[targetOperand].charAt(0) === ".") {
+			// normalise any numbers starting with "." to "0."
+			state[targetOperand] = "0".concat(state[targetOperand]);
+		}
 	}
 	updateDisplay();
 }
