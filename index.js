@@ -120,14 +120,21 @@ function equals(){
 	} else {
 		const newAnswer = operate(decipherSymbol(state.operator, eitherA(), state.operandB));
 		clear();
-		state[answer] = newAnswer
+		state[answer] = String(newAnswer);
 	}
 }
 
 function eitherA() {
 	// If you have a valid A, give that,
 	// else if you have a valid last-answer, give THAT,
-	// else give "" 
+	// else give ""
+	if (state.operandA != "") {
+		return state.operandA;
+	}
+	if ("answer" in state) {
+		return state.answer;
+	}
+	return "";
 }
 
 function decipherSymbol(key) {
@@ -148,10 +155,11 @@ function decipherSymbol(key) {
 function updateDisplay(){
 	// This function should fire on any user interaction!
 	// That makes it useful for closing off Undo steps.
-	if (state[activeOperand()] == "") {
+	const answerOrA = eitherA();
+	if (answerOrA == "") {
 		mainReadout.textContent = "ready!";
 	} else {
-		mainReadout.textContent = state[activeOperand()];
+		mainReadout.textContent = answerOrA;
 	}
 	if (DEBUG) { logStateReadout() };
 }
