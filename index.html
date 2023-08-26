@@ -9,9 +9,67 @@
 </head>
 <body>
     <div class="brick">
+        <div class="menu">
+            <button>reset</button>
+        </div>
         <div class="full-readout">69 x 420</div>
         <div class="main-readout">420</div>
-        <div class="keypad"></div>
+        <div class="keypad">
+            <!-- Going with a layout similar to my KB numpad -->
+            <!-- 
+                / * - <
+                1 2 3 +
+                4 5 6 +
+                7 8 9 =
+                0 0 . =
+             -->
+            <div class="column double">
+                <div class="row single">
+                    <button>/</button>
+                    <button>*</button>
+                </div>
+                <div class="row single">
+                    <button>1</button>
+                    <button>2</button>
+                </div>
+                <div class="row single">
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+                <div class="row single">
+                    <button>7</button>
+                    <button>8</button>
+                </div>
+                <div class="row single">
+                    <button>0</button>
+                </div>
+            </div>
+            <div class="column single">
+                <div class="row single">
+                    <button>-</button>
+                </div>
+                <div class="row single">
+                    <button>3</button>
+                </div>
+                <div class="row single">
+                    <button>6</button>
+                </div>
+                <div class="row single">
+                    <button>9</button>
+                </div>
+            </div>
+            <div class="column single">
+                <div class="row single">
+                    <button>Undo</button>
+                </div>
+                <div class="row double">
+                    <button>+</button>
+                </div>
+                <div class="row double">
+                    <button>=</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
