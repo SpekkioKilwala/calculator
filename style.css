@@ -1,9 +1,68 @@
 body {
     background-color: lightslategrey;
     margin: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-button {
-    min-width: 50px;
-    min-height: 50px;
+.brick {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    border: 1px dotted red;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title-bar {
+    margin: auto;
+}
+
+.full-readout,
+.main-readout {
+    text-align: right;
+}
+
+.main-readout {
+    font-size: 2rem;
+}
+
+.keypad {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.x1 {
+    width: 50px;
+}
+
+.x2 {
+    width: 100px;
+}
+
+.y1 {
+    height: 50px;
+}
+
+.y2 {
+    height: 100px;
 }
