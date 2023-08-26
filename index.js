@@ -2,14 +2,27 @@
 // a = 2;
 // alert("JS working");
 
+// ========= INITIALISATION ============
+
 let operandA;
 let operandB;
 let operator;
 clear();
 
+const mainReadout = document.querySelector(".main-readout");
+const digitButtons = document.querySelectorAll(".digit");
+digitButtons.forEach(button => button.addEventListener('click', actionClick)); // <--- review this line. On paper. Super critical.
+
+// ========= INITIALISATION DONE =======
+
+function actionClick(e) {
+    // console.log(e);
+    console.log(e.srcElement.innerText)
+}
+
 function clear() {
-    operandA = 0;
-    operandB = 0;
+    operandA = ""; // Number("") -> 0 which displays nicely and you can append to it
+    operandB = "";
     operator = undefined; // it's undefined until the user sets it
 }
 

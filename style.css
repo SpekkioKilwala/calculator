@@ -21,12 +21,14 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 4rem;
     /* padding: 1rem; */
     /* gap: 1rem; */
 }
 
 .title-bar {
     font-size: 1.5rem;
+    margin: 2rem;
 }
 
 .full-readout,
@@ -44,6 +46,9 @@ body {
 .keypad {
     display: flex;
     flex-direction: row;
+    width: 20rem;
+    height: 25rem;
+    /* justify-content: space-evenly; */
 }
 
 .column {
@@ -61,13 +66,13 @@ body {
 }
 
 .single {
-    /* Single-button columns/rows shouldn't be allocated ANY extra space */
-    flex-grow: 0;
+    flex-grow: 1;
+    flex-basis: 5rem;
 }
 
 .double {
-    flex-grow: 1;
-    align-items: stretch;
+    flex-grow: 2;
+    flex-basis: 10rem;
 }
 
 button {
@@ -76,12 +81,4 @@ button {
     margin: 0.2rem;
     flex-grow: 1;
     align-self: stretch;
-}
-
-.x1 {
-    width: 4rem;
-}
-
-.y1 {
-    height: 4rem;
 }
