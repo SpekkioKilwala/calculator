@@ -19,6 +19,8 @@ clear(state);
 const mainReadout = document.querySelector(".main-readout");
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(button => button.addEventListener('click', actionDigit)); // <--- review this line. On paper. Super critical.
+const resetButton = document.querySelector(".reset");
+resetButton.addEventListener('click', btReset);
 
 updateDisplay();
 
@@ -77,6 +79,13 @@ function activeOperand() {
 	if (state.operator) {
 		return "operandB"
 	} return "operandA"
+}
+
+function btReset() {
+	// Just like starting over
+	// I PROBABLY want it to clear the Undo history too.
+	clear(state);
+	updateDisplay();
 }
 
 function clear(state) {
