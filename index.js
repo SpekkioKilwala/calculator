@@ -9,6 +9,7 @@ const DEBUG = true;
 const state = {
 	operandA: "",
 	operandB: "",
+	answer: undefined,
 	operator: undefined
 }; 
 // I actually hate having an object called "state" but I need
@@ -80,9 +81,14 @@ function actionOperator(e) {
 	// FURTHERMORE, that Equals operation needs to be part of the same
 	// "transaction", so (since I don't want to redesign the action history)
 	// this same action-handler needs to handle equals *too*.
+
+	// action-history Undo starts *here* <====
+
 }
 
 function updateDisplay(){
+	// This function should fire on any user interaction!
+	// That makes it useful for closing off Undo steps.
 	if (state[activeOperand()] == "") {
 		mainReadout.textContent = "ready!";
 	} else {
@@ -114,9 +120,10 @@ function btReset() {
 }
 
 function clear(state) {
-	state.operandA = ""
-	state.operandB = ""
-	state.operator = undefined
+	state.operandA = "";
+	state.operandB = "";
+	state.answer = undefined;
+	state.operator = undefined;
 }
 
 function operate(operator, a, b) {
