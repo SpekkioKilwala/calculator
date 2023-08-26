@@ -4,6 +4,8 @@
 
 // ========= INITIALISATION ============
 
+const DEBUG = true;
+
 const state = {
 	operandA: "",
 	operandB: "",
@@ -59,6 +61,16 @@ function updateDisplay(){
 	} else {
 		mainReadout.textContent = state[activeOperand()];
 	}
+	if (DEBUG) { logStateReadout() };
+}
+
+function logStateReadout() {
+	const logState = [
+		[state.operandA, Number(state.operandA)], 
+		[state.operandB, Number(state.operandB)],
+		[state.operator, Number(state.operator)],
+	];
+	console.table(logState);
 }
 
 function activeOperand() {
