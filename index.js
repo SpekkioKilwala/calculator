@@ -27,6 +27,9 @@ resetButton.addEventListener('click', btReset);
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach(button => button.addEventListener('click', actionOperator));
 
+const equalsButton = document.querySelector(".equals");
+equalsButton.addEventListener("click", actionOperator); // convenient to put on the operators too
+
 updateDisplay();
 
 // ========= INITIALISATION DONE =======
@@ -65,6 +68,18 @@ function actionDigit(e) {
 function actionOperator(e) {
 	const op = e.srcElement.innerText;
 	console.log(op);
+
+	// If you have only one (simple operation):
+	//	set the state.operator accordingly.
+	// 	(then, digit inputs will target the *second* operator)
+	// If you have TWO operators (multi-step operation):
+	//	act as if the user just hit the equals key *first*.
+	//	(then, do the first thing.)
+	// Which rearranges to: check for 2-op -> do Equals, then do 1-op.
+
+	// FURTHERMORE, that Equals operation needs to be part of the same
+	// "transaction", so (since I don't want to redesign the action history)
+	// this same action-handler needs to handle equals *too*.
 }
 
 function updateDisplay(){
