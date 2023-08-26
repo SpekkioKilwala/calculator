@@ -2,6 +2,20 @@
 // a = 2;
 // alert("JS working");
 
+let operandA;
+let operandB;
+let operator;
+clear();
+
+function clear() {
+    operandA = 0;
+    operandB = 0;
+    operator = undefined; // it's undefined until the user sets it
+}
+
+function operate(operator, a, b) {
+    return operator(a, b);
+}
 
 function add(a, b) {
     return (+a + +b);
@@ -20,8 +34,4 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return (a / b);
-}
-
-function operate(operand, a, b) {
-    return operand(a, b);
 }
