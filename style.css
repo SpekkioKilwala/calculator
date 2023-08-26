@@ -21,15 +21,20 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    /* padding: 1rem; */
+    /* gap: 1rem; */
 }
 
 .title-bar {
-    margin: auto;
+    font-size: 1.5rem;
 }
 
 .full-readout,
 .main-readout {
     text-align: right;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
 }
 
 .main-readout {
@@ -44,25 +49,47 @@ body {
 .column {
     display: flex;
     flex-direction: column;
+    /* padding: 0.15rem; */
+    /* flex-grow: 1; */
 }
 
 .row {
     display: flex;
     flex-direction: row;
+    /* padding: 0.15rem; */
+    /* flex-grow: 1; */
+}
+
+.single {
+    /* Single-button columns/rows shouldn't be allocated ANY extra space */
+    flex-grow: 0;
+}
+
+.double {
+    flex-grow: 1;
+    align-items: stretch;
+}
+
+button {
+    border-radius: 10px;
+    font-size: 1.2rem;
+    margin: 0.2rem;
+    flex-grow: 1;
+    align-self: stretch;
 }
 
 .x1 {
-    width: 50px;
+    width: 4rem;
 }
 
 .x2 {
-    width: 100px;
+    width: 8rem;
 }
 
 .y1 {
-    height: 50px;
+    height: 4rem;
 }
 
 .y2 {
-    height: 100px;
+    height: 8rem;
 }
