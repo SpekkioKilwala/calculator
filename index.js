@@ -156,7 +156,9 @@ function updateDisplay(){
 	// This function should fire on any user interaction!
 	// That makes it useful for closing off Undo steps.
 	const answerOrA = eitherA();
-	if (answerOrA == "") {
+	if (state.operandB != "") {
+		mainReadout.textContent = state.operandB;
+	} else if (answerOrA == "") {
 		mainReadout.textContent = "ready!";
 	} else {
 		mainReadout.textContent = answerOrA;
