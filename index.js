@@ -152,18 +152,31 @@ function decipherSymbol(key) {
 	}
 }
 
-function updateDisplay(){
+function updateDisplay() {
 	// This function should fire on any user interaction!
 	// That makes it useful for closing off Undo steps.
 	const answerOrA = eitherA();
 	if (state.operandB != "") {
-		mainReadout.textContent = state.operandB;
+		mainReadout.textContent = roundNumber(state.operandB);
 	} else if (answerOrA == "") {
 		mainReadout.textContent = "ready!";
 	} else {
-		mainReadout.textContent = answerOrA;
+		mainReadout.textContent = roundNumber(answerOrA);
 	}
 	if (DEBUG) { logStateReadout() };
+}
+
+function roundNumber(maybeLong) {
+	// Given a number, if it's very long, display it
+	// in scientific form instead.
+	// 5 significant digits?
+	if (Number(maybeLong) == NaN) {
+		return maybeLong
+	}
+	if (maybeLong.length <= 12) {
+		return maybeLong
+	}
+	return Number(maybeLong).toExponential(6)
 }
 
 function logStateReadout() {
