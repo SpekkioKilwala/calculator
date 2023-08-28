@@ -1,5 +1,5 @@
 body {
-    background-color: lightslategrey;
+    background-color: rgb(64, 73, 82);
     margin: 0px;
     font-family: 'Courier New', Courier, monospace;
     display: flex;
@@ -14,7 +14,10 @@ body {
     flex-direction: column;
     width: fit-content;
     height: fit-content;
-    border: 1px dotted red;
+    border: 4px solid black;
+    border-radius: 1rem;
+    padding: 0.8rem;
+    background-color:rgb(182, 182, 182)
 }
 
 .menu {
@@ -34,9 +37,12 @@ body {
 .full-readout,
 .main-readout {
     text-align: right;
-    padding: 5px;
-    border: 2px solid black;
-    border-radius: 4px;
+    padding: 6px;
+    margin: 5px;
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: rgb(56, 59, 61);
+    color: rgb(199, 209, 218);
 }
 
 .main-readout {
