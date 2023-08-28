@@ -110,7 +110,7 @@ function keyPress(e){
 	// simulate pressing that button.
 	// Else, check for special cases (Enter => =, Backspace => Undo).
 	// Else, do nothing.
-	console.log(e.key)
+	// console.log(e.key)
 	let key;
 	if (e.key == "Enter") {
 		key = document.querySelector(`button[data-key="="]`);
@@ -118,6 +118,9 @@ function keyPress(e){
 		key = document.querySelector(`button[data-key="${e.key}"]`);
 	}
 	console.log(key);
+
+	const clickEvent = new Event('click');
+	key.dispatchEvent(clickEvent);
 }
 
 function operands(){
