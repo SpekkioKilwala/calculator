@@ -31,6 +31,8 @@ operatorButtons.forEach(button => button.addEventListener('click', actionOperato
 const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click", actionOperator); // convenient to put on the operators too
 
+window.addEventListener("keydown", keyPress); // catch key input
+
 updateDisplay();
 
 // ========= INITIALISATION DONE =======
@@ -101,6 +103,21 @@ function actionOperator(e) {
 		}
 	}
 	updateDisplay();
+}
+
+function keyPress(e){
+	// if the key pressed matches one of the buttons,
+	// simulate pressing that button.
+	// Else, check for special cases (Enter => =, Backspace => Undo).
+	// Else, do nothing.
+	console.log(e.key)
+	let key;
+	if (e.key == "Enter") {
+		key = document.querySelector(`button[data-key="="]`);
+	} else {
+		key = document.querySelector(`button[data-key="${e.key}"]`);
+	}
+	console.log(key);
 }
 
 function operands(){
