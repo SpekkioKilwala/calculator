@@ -49,9 +49,11 @@ function actionDigit(e) {
 	console.log(digit);
 
 	// Create the action object here, with action: "digit"
+	loadDigit(digit);
+}
 
+function loadDigit(digit) {
 	const targetOperand = activeOperand(); // only ever A or B
-
 	if ((digit == ".") && (state[targetOperand].includes("."))) {
 		console.log("Only one decimal point allowed!")
 		// raise the Undo flag, flow on to update display
