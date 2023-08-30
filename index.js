@@ -48,6 +48,9 @@ function actionDigit(e) {
 	const digit = e.srcElement.innerText;
 	console.log(digit);
 
+	// colour that thing
+
+
 	// Create the action object here, with action: "digit"
 	loadDigit(digit);
 }
@@ -120,9 +123,10 @@ function keyPress(e){
 		key = document.querySelector(`button[data-key="${e.key}"]`);
 	}
 	console.log(key);
-
-	const clickEvent = new Event('click');
-	key.dispatchEvent(clickEvent);
+	if (key) {
+		const clickEvent = new Event('click');
+		key.dispatchEvent(clickEvent);	
+	}
 }
 
 function operands(){
