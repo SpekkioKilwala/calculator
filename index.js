@@ -45,11 +45,13 @@ function actionDigit(e) {
 	// event types.)
 	
 	// console.log(e);
-	const digit = e.srcElement.innerText;
+	const digit = e.target.innerText;
 	console.log(digit);
 
 	// colour that thing
+	e.target.classList.add("pressed")
 
+	// console.log(e.srcElement);
 
 	// Create the action object here, with action: "digit"
 	loadDigit(digit);
