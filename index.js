@@ -60,10 +60,6 @@ function actionDigit(e) {
 	loadDigit(digit);
 }
 
-function flashButton(button) {
-	button.classList.add("pressed");
-}
-
 function removeTransition(e) {
 	// console.log(e);
 	if (e.propertyName != "color") return;
@@ -105,6 +101,8 @@ function actionOperator(e) {
 	// this same action-handler needs to handle equals *too*.
 
 	// action-history Undo starts *here* <====
+
+	this.classList.add("pressed");
 
 	if (operands() == 0) {
 		// do nothing. Maybe tell the user to input something.
