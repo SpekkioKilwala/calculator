@@ -31,6 +31,9 @@ operatorButtons.forEach(button => button.addEventListener('click', actionOperato
 const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click", actionOperator); // convenient to put on the operators too
 
+const allButtons = document.querySelectorAll("button");
+allButtons.forEach(button => button.addEventListener("transitionend", removeTransition));
+
 window.addEventListener("keydown", keyPress); // catch key input
 
 updateDisplay();
@@ -45,16 +48,26 @@ function actionDigit(e) {
 	// event types.)
 	
 	// console.log(e);
-	const digit = e.target.innerText;
+	// const button = e.target // You don't need this, because THIS is the button
+	const digit = this.innerText;
 	console.log(digit);
 
 	// colour that thing
-	e.target.classList.add("pressed")
-
-	// console.log(e.srcElement);
+	// flashButton(this)
+	this.classList.add("pressed");
 
 	// Create the action object here, with action: "digit"
 	loadDigit(digit);
+}
+
+function flashButton(button) {
+	button.classList.add("pressed");
+}
+
+function removeTransition(e) {
+	// console.log(e);
+	if (e.propertyName != "color") return;
+	this.classList.remove("pressed");
 }
 
 function loadDigit(digit) {
